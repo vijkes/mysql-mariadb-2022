@@ -1,0 +1,153 @@
+SHOW DATABASES;
+
+create database dbots;
+
+SHOW DATABASES;
+
+USE dbots;
+SHOW TABLES;
+CREATE TABLE students (
+	salary int, 
+    name char(30), 
+    mobile int, 
+    remarks char(5) 
+    );
+# describe table students;
+
+#select * from students;
+insert into students values (23, 'vimal' , 121323, 'ok' );
+insert into students (mobile , name ) values (2323, "krish");
+insert into students (
+		salary, remarks, mobile , name 
+			) values 
+			(14, "good" , 2323, "krish");
+insert into students (
+		remarks, salary, mobile , name 
+			) values 
+			("wait", 15, 2342, "spider") , 
+            ("go", 17, 323, "iron"), 
+            ("gone", 19, 7323, "iron"), 
+            ("gone", 19, 7323, "iron");
+            
+# insert into students (remarks) values ("excellent" );
+# insert into students (salary) values ("goodhighsalary" );
+
+drop table newbatch;
+show tPRIMARYables;
+
+drop database newbatch;
+show databases;
+
+create database newbatch;
+use newbatch;
+CREATE TABLE newbatch (
+	orderid int unique auto_increment,
+	name char(30), 
+    gender enum("M", "F"),
+    mobile char(10) , 
+    course char(15),
+    price decimal(3,2), 
+    reg char(15)
+    );
+# describe table newbatch;
+
+select mobile from newbatch WHERE name='vk';
+select * from newbatch WHERE gender='f';
+select count(*) from newbatch WHERE course='mL';
+select * from newbatch WHERE course='mL';
+select sum(price) from newbatch WHERE course="ml";
+select count(*) from newbatch  WHERE price >=6.4 ;
+select count(course) from newbatch WHERE name='Keshav' and mobile="3326298445"  ;
+select * from newbatch where orderid <=2;
+
+
+insert into  newbatch (name , gender, mobile, course, price, reg) values 
+					("v656k", "M", "131417445", "AI", 4.5, "15/02/2021"),
+                    ("ak", "M", "11922445", "git", 7.5, "15/02/2022"),
+                    ("nk", "F", "1512564", "ML", 6.5, "25/02/2025"),
+                    ("yk", "F", "15031154", "mL", 3.5, "25/02/2025"),
+                     ("hk", "M", "18512154", "ml", 2.5, "25/02/2025"),
+                    ("dk", "f", "164644155", "wpress", 9.5, "15/02/2023"),
+                    ("ck", "M", "177661565", "lab", 4.25, "13/01/2024"),
+                    ("vk", "M", "131417445", "lab", 4.25, "15/02/2021"),
+                    ("vk", "M", "131417445", "lab", 4.25, "15/02/2021"),
+                    ("vk", "M", "13141745", "lab", 4.25, "15/02/2021")
+                    ;  
+insert into  newbatch (name , gender, mobile, course, price, reg) values 
+					("Majkjdhav", "M", "326298445", "AI", 5.5, "Mon 18/06/2023");
+                    
+insert into  newbatch (name , gender, mobile, course, price, reg) values 
+                    ("Golu", "M", "326298445", "DevOps", 5.5, "Mon 18/06/2023");            
+
+insert into  newbatch (name , gender, mobile, course, price, reg) values 
+                    ("Keshav", "M", "3326298445", "DevOps", 5.5, "Mon 19/06/2023");            
+  
+insert into  newbatch (name , gender, mobile, course, price, reg) values 
+                    ("Keshav", "M", "3326298445", "DevOps, Quantum", 5.5, "Mon 19/06/2023");            
+  
+            
+  select *  from newbatch;
+  select * from newbatch where orderid=5;
+  select * from newbatch where mobile = '131417445' and name = 'vk';
+  select * from newbatch where name = 'vk';
+           
+           
+           
+           
+ create table students (
+	sid int primary key auto_increment ,
+    first_name char(30) not null,
+    last_name char(30),
+    gender enum("M", "F"),
+    phone_number char(12) unique
+);
+    show tables;
+	describe students;
+    
+ create table courses(
+	cid int auto_increment ,
+	course_name varchar(40) unique,
+	price decimal(4,2),
+	teacher char(30), 
+	primary key(cid)
+ );
+ 
+ desc courses;
+ 
+ create table orders (
+	oid int auto_increment primary key,
+	course_id int ,
+	student_id int ,
+	order_time datetime,
+	foreign key (course_id) references courses(cid),
+	foreign key (student_id) references students(sid)
+   );
+   
+desc orders;   
+
+select * from students;
+
+
+select * from courses;
+
+insert into courses (course_name, price, teacher)
+values
+("mongodb", 2.5, "vimal"),
+("mariadb", 3.5, "tom"),
+("AI", 5.3, "DV");
+
+select * from orders;
+select * from orders where oid=1;
+
+
+insert into orders (course_id, student_id, order_time)
+values
+(2, 1, "2022-05-31");   
+
+insert into students(first_name, gender, phone_number ) 
+values
+('ram kumar' , "M", 458654455),
+('sekhar kumar' , "M", 4511286545),
+("neha", "f", 11111);
+
+
