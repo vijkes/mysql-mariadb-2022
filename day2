@@ -1,0 +1,356 @@
+SHOW DATABASES;
+
+select * from students;
+show grants for '20aug'@'103.59.75.58';
+create database dbot3;
+
+SHOW DATABASES;
+
+USE dbot3;
+use dbot3new;
+SHOW TABLES;
+
+drop table students;
+CREATE TABLE students (
+	salary int, 
+    name char(30), 
+    mobile int, 
+    remarks char(5) 
+    );
+# describe table students;
+
+select * from students;
+insert into students values (23, 'vimal' , 45654, 'ok' );
+insert into students (mobile , name ) values (2323, "krish");
+insert into students (
+		salary, remarks, mobile , name 
+			) values 
+			(14, "good" , 2323, "krish");
+insert into students (
+		remarks, salary, mobile , name 
+			) values 
+			("wait", 15, 2342, "spider") , 
+            ("go", 17, 323, "iron"), 
+            ("gone", 19, 7323, "iron"), 
+            ("gone", 19, 7323, "iron");
+            
+# insert into students (remarks) values ("excellent" );
+# insert into students (salary) values ("goodhighsalary" );
+
+drop table newbatch;
+show tPRIMARYables;
+
+drop database newbatch;
+show databases;
+
+create database newbatch;
+use newbatch;
+CREATE TABLE newbatch (
+	orderid int unique auto_increment,
+	name char(30), 
+    gender enum("M", "F"),
+    mobile char(10) , 
+    course char(15),
+    price decimal(3,2), 
+    reg char(15)
+    );
+# describe table newbatch;
+
+select mobile from newbatch WHERE name='vk';
+select * from newbatch WHERE gender='f';
+select count(*) from newbatch WHERE course='mL';
+select * from newbatch WHERE course='mL';
+select sum(price) from newbatch WHERE course="ml";
+select count(*) from newbatch  WHERE price >=6.4 ;
+select count(course) from newbatch WHERE name='Keshav' and mobile="3326298445"  ;
+select * from newbatch where orderid <=2;
+
+
+insert into  newbatch (name , gender, mobile, course, price, reg) values 
+					("v656k", "M", "131417445", "AI", 4.5, "15/02/2021"),
+                    ("ak", "M", "11922445", "git", 7.5, "15/02/2022"),
+                    ("nk", "F", "1512564", "ML", 6.5, "25/02/2025"),
+                    ("yk", "F", "15031154", "mL", 3.5, "25/02/2025"),
+                     ("hk", "M", "18512154", "ml", 2.5, "25/02/2025"),
+                    ("dk", "f", "164644155", "wpress", 9.5, "15/02/2023"),
+                    ("ck", "M", "177661565", "lab", 4.25, "13/01/2024"),
+                    ("vk", "M", "131417445", "lab", 4.25, "15/02/2021"),
+                    ("vk", "M", "131417445", "lab", 4.25, "15/02/2021"),
+                    ("vk", "M", "13141745", "lab", 4.25, "15/02/2021")
+                    ;  
+insert into  newbatch (name , gender, mobile, course, price, reg) values 
+					("Majkjdhav", "M", "326298445", "AI", 5.5, "Mon 18/06/2023");
+                    
+insert into  newbatch (name , gender, mobile, course, price, reg) values 
+                    ("Golu", "M", "326298445", "DevOps", 5.5, "Mon 18/06/2023");            
+
+insert into  newbatch (name , gender, mobile, course, price, reg) values 
+                    ("Keshav", "M", "3326298445", "DevOps", 5.5, "Mon 19/06/2023");            
+  
+insert into  newbatch (name , gender, mobile, course, price, reg) values 
+                    ("Keshav", "M", "3326298445", "DevOps, Quantum", 5.5, "Mon 19/06/2023");            
+  
+            
+  select *  from newbatch;
+  select * from newbatch where orderid=5;
+  select * from newbatch where mobile = '131417445' and name = 'vk';
+  select * from newbatch where name = 'vk';
+           
+           
+           
+create database cbots; 
+use cbots;
+desc students;
+select * from students;
+           
+ create table 
+ students (
+	sid int primary key auto_increment ,
+    first_name char(30) not null,
+    last_name char(30),
+    gender enum("M", "F"),
+    phone_number char(12) unique
+);
+    show tables;
+	describe students;
+  
+  
+ drop table courses; 
+ create table courses(
+	cid int auto_increment ,
+	course_name varchar(40) unique,
+	price decimal(4,2),
+	teacher char(30), 
+	primary key(cid)
+ );
+ 
+ desc courses;
+ 
+ drop table orders;
+ create table orders (
+	oid int auto_increment primary key,
+	course_id int ,
+	student_id int ,
+	order_time datetime,
+	foreign key (course_id) references courses(cid),
+	foreign key (student_id) references students(sid)
+   );
+   
+desc orders;   
+
+select * from students;
+
+select teacher from courses;
+select distinct teacher from courses;
+
+select * from courses;
+
+select now();
+
+
+insert into courses (course_name, price, teacher)
+values
+("mongodb", 2.5, "vimal"),
+("mariadb", 3.5, "tom"),
+("AI", 5.3, "DV");
+
+insert into courses (course_name, price, teacher)
+values
+("Dev O p  s M L A I", 3.2, "vimal");
+
+
+
+select * from orders ;
+select * from orders limit 3 offset 2;
+select * from orders limit 2;
+select * from orders where oid=3;
+select * from orders order by order_time desc;
+select * from orders order by order_time desc limit 2;
+select * from orders order by order_time desc limit 2 offset 3;
+
+
+
+select date("2022-05-13 12:13:18");
+select month("2022-05-13 12:13:18");
+select year("2022-05-13 12:13:18");
+select hour("2022-05-13 12:13:18");
+select minute("2022-05-13 12:13:18");
+select second("2022-05-13 12:13:18");
+
+select order_time from orders;
+select month(order_time) from orders;
+select hour(order_time) from orders;
+
+select distinct month(order_time) from orders;
+
+select * from orders WHERE MONTH(order_time) > 5;
+select * from orders WHERE YEAR(order_time) = 2022;
+select * from orders WHERE date(order_time) between '2010-10-10' and '2023-01-01' ;
+
+select * from orders join courses;
+
+select orders.order_time, courses.course_name, courses.price
+from orders inner join courses
+ON orders.course_id = courses.cid;
+
+select sum( courses.price) 
+from orders inner join courses
+ON orders.course_id = courses.cid;
+
+select orders.order_time, courses.course_name, courses.price
+from orders inner join courses
+ON orders.course_id = courses.cid;
+WHERE YEAR (orders.order_time) = 2022 and courses.course_name = "DevOps";
+
+select * from orders o
+join courses c on c.cid = o.course_id
+join students s on o.student_id = s.sid;
+
+
+select * from courses c
+join orders o on c.cid = o.course_id
+join students s on  o.student_id = s.sid;
+
+select c.course_name
+from courses c
+join orders o on c.cid = o.course_id
+join students s on  o.student_id = s.sid;
+
+select *
+from courses c
+join orders o on c.cid = o.course_id
+join students s on  o.student_id = s.sid;
+
+select c.course_name, o.order_time, s.first_name, s.phone_number
+from courses c
+join orders o on c.cid = o.course_id
+join students s on  o.student_id = s.sid
+where c.teacher = 'vimal' ;
+
+select cid from courses where price > 6;
+
+select * from courses;
+select * from courses where course_name = 'devops' or course_name = 'mongodb' ;
+select * from courses where course_name in ('devops', 'mongodb') ;
+select * from courses where course_name LIKE 'd%';
+select * from courses where course_name LIKE '%o%';
+select * from courses where course_name LIKE '_e%';
+
+
+#non corelated subquerries
+
+select * from orders where course_id IN (select cid from courses where price > 4);
+
+select * from students where sid IN (
+select student_id from orders where course_id IN (select cid from courses where price > 3));
+
+select student_id, count(course_id) AS ccount from orders group by student_id
+having student_id=3;
+
+
+#slicing strings
+select substring('Hello World',1,7);
+select substring(course_name,1,9) course_name from courses ;
+
+
+
+
+
+
+
+update courses 
+#set price=4.5 where cid=2;
+#set price=5.5 where cid=3;
+#set price=6.5 where cid=4;
+set price=7.5 where cid=5;
+
+select * from students s
+left join  orders o
+ON s.sid = o.student_id;
+
+select * from students s
+right join  orders o
+ON s.sid = o.student_id;
+
+select * from students s
+full join  orders o
+ON s.sid = o.student_id;
+
+
+select c.course_name, o.order_time, s.first_name, s.phone_number
+from courses c
+join orders o on c.cid = o.course_id
+join students s on  o.student_id = s.sid
+where c.teacher = 'vimal' and c.course_name = 'DevOps';
+
+select * from courses;
+
+#inline queries or short hand join
+select o.order_time, c.course_name, c.price
+from orders o
+inner join courses c
+ON o.course_id = c.cid
+where c.teacher = 'vimal'
+order by order_time desc
+limit 100 offset 0;
+
+
+
+select * from courses;
+
+
+WHERE YEAR (orders.order_time) = 2022 and courses.course_name = "DevOps";
+
+select count(*)
+from orders inner join courses
+ON orders.course_id = courses.cid
+WHERE YEAR (orders.order_time) = 2022 and courses.course_name = "DevOps";
+
+
+select courses.course_name from orders join courses;
+orders.course_id = courses.cid;
+
+desc students;	
+alter table students add column profession varcharacter(10) ;
+alter table students drop column icountry ;
+select * from students;
+
+set sql_safe_updates=1;
+update courses SET course_name='Artificial Intelligence'
+where cid=3;
+
+select * from courses;
+select * from orders;
+
+drop table orders;
+truncate table orders;
+
+
+
+insert into students(first_name, gender, phone_number, country, profession ) 
+values  ('sidhart', 'M', '65465132', 'India', "Engineer");
+
+insert into orders ( course_id,student_id, order_time)
+values
+( 7, 4, now() );   
+
+desc orders;
+insert into orders ( course_id, student_id, order_time)
+values
+(3, 3, now() ); 
+
+insert into orders (course_id, student_id, order_time)
+values
+(4, 3, now() );
+
+insert into students(first_name, last_name, gender, phone_number ) 
+values
+('ram kumar', "" , "M", 458654455),
+('sekhar kumar', "" , "M", 4511286545),
+("neha", "", "f", 11111);
+
+insert into students(first_name, last_name, gender, phone_number ) 
+values
+("ravi", "dffds", "F", 4656);
+
+select now();
